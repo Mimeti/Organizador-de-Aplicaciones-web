@@ -1,15 +1,9 @@
 const express = require("express");
 
-const mysql = require("mysql");
+import { conexion } from "./config/conexion";
 
 const app = express();
 
-const conexion = mysql.createConnection({
-    host: "localhost",
-    database: "db_organizador",
-    user: "root",
-    password: ""
-});
 
 
 
