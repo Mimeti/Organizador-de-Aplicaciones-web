@@ -15,5 +15,5 @@ conexion.connect(function(error){
         }
 });
 
-export{conexion};
+module.exports = conexion;
 
