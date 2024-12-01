@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/sigin" method="post">
+        <input type="text" name="user" id="user" placeholder="Ingrese nombre de usuario" required>
+        <input type="password" name="pass" id="pass" placeholder="Ingrese una contraseña" required>
+        <select name="ID_deb" id="ID_deb">
+            <% deb.forEach((depart)=>{ %>
+                <option value=<%= depart.ID_deb%>><%= depart.NAME_deb%></option>
+            <%})%>
+        </select>
+        <button type="submit">Registrar</button>
+    </form>
+</body>
+</html>
