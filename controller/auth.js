@@ -2,6 +2,7 @@ const conexion = require('../config/conexion');
 const cryp = require('bcryptjs');
 const {promisify} = require('util');
 const jwt = require('jsonwebtoken');
+const { error } = require('console');
 
 exports.sigin = async (req, res) => {
     const NAME_user = req.body.user;
@@ -47,4 +48,24 @@ exports.save = async (req, res) =>{
 }
 
 exports.authentication = async (req, res, next)=>{
+    if(req.cookies.jwt){
+        try {
+            const deco = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
+            conexion.query('SELECT * FROM usuario WHERE ID_use = ?', [deco.id], (error, results)=>{
+                if(!results){return next()}
+                req.NAME_user = results[0]
+                return next()
+            })
+        } catch (error) {
+            console.log(error)
+            return next()
+        }
+    }else{
+        res.redirect('/login')
+    }
+}
+
+exports.logOut = async(req, res)=>{
+    res.clearCookie('jwt')
+    return res.redirect('/')
 }
