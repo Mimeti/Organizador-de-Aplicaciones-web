@@ -6,6 +6,37 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/logout">salir</a>
+    <nav>
+        <% if (user.ID_deb == 2) {%>
+            <li>
+                <ul><a href="/registro">Registrar usuario</a></ul>
+                <ul><a href="/add">Ingresar nueva aplicacion</a></ul>
+            </li>
+        <% } %>
+
+        <p><%= user.ID_deb%></p>    
+        
+        <a href="/logout">salir</a>    
+    </nav>
+
+    <% apps.forEach((app)=>{ %>
+        <div>
+            <img src="/resources/img/<%=app.IMG_app%>" alt="">
+            <p><%=app.NAME_app%></p>
+            <a href=<%=app.URL_app%>></a>
+            <% if (user.ID_deb == 2) {%>
+                <a href="/update/<%= app.ID_app %>">editar</a>
+                <a href="/delete/<%= app.ID_app %>">borrar</a>
+            <% } %>
+        </div>
+        
+    <%})%>
+
+    <% if (user.ID_deb == 2) {%>
+        <div> 
+            <a href="/add">nuevo</a>
+        </div>
+    <% } %>
+
 </body>
 </html>

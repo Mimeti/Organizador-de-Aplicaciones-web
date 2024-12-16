@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (user.ID_deb == 2) {%>
+        <% apl.forEach((apl)=>{%>
+            <form action="/borrar" method="post">
+                <input type="hidden" name="ID_app" value=<%= apl.ID_app %>>
+                <input type="hidden" name="IMG_old" value=<%= apl.IMG_app %>>
+                <p>¿Seguro quieres borrar?</p>
+                <button type="submit">SI</button>
+                <a href="/">NO</a>
+            </form>
+        <% })%>
+    <% } %>
+</body>
+</html>

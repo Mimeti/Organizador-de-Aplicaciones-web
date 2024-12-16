@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (user.ID_deb == 2) {%>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="text" name="NAME_app" id="NAME_app" placeholder="Nombre de la aplicación">
+            <input type="text" name="URL_app" id="URL_app" placeholder="Enlace de la aplicacion">
+            <label for="IMG_app">Imagen de la aplicacion</label>
+            <input type="file" name="IMG_app" id="IMG_app">
+            <label for="ID_deb">Area</label>
+            <select name="ID_deb" id="ID_deb">
+                <option value=""></option>
+                <% deb.forEach((depart)=>{ %>
+                    <option value=<%= depart.ID_deb%>><%= depart.NAME_deb%></option>
+                <%})%>
+            </select>
+            <button type="submit">Ingresar datos</button>
+            <a href="/">Volver</a>
+        </form>
+    <% } %>
+</body>
+</html>

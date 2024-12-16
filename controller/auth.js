@@ -51,7 +51,7 @@ exports.authentication = async (req, res, next)=>{
     if(req.cookies.jwt){
         try {
             const deco = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
-            conexion.query('SELECT * FROM usuario WHERE ID_use = ?', [deco.id], (error, results)=>{
+            conexion.query('SELECT * FROM usuario WHERE ID_user = ?', [deco.id], (error, results)=>{
                 if(!results){return next()}
                 req.NAME_user = results[0]
                 return next()

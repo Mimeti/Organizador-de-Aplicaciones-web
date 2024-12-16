@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.container{
+    background-image: radial-gradient(90deg, rgb(199, 235, 220), rgb(107, 119, 122));
+    width: 50%;
+    height: 70%;
+    border: 1px black solid;
+}
+
+.container input{
+    width: 95%;
+}
