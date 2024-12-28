@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="./resources/css/style.css">
 </head>
 <body>
-    <div class="container">
-        <form action="/save" method="post" >
-            <input type="text" name="user" id="user" placeholder="Ingresa tu nombre de usuario." required>
-            <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña." required>
-            <button type="submit">Ingresar</button>
-        </form>
-    </div>
-    
+    <form action="/save" method="post" class="container">
+        <h1>Iniciar sesion</h1>
+        <div class="inputBox">
+            <input type="text" name="user" id="user" required>
+            <span class="linea">Nombre de usuario</span>
+        </div>
+        <div class="inputBox">
+            <input type="password" name="password" id="password" required>
+            <span class="linea">Contraseña</span>
+        </div>
+
+        <button type="submit">Ingresar</button>
+    </form>
 </body>
 </html>

@@ -1,16 +1,241 @@
+@keyframes desplazar{
+    from{transform: translateX(200px);}
+    to{transform: translateX(0px);}
+}
+
+.desplegar{
+    animation-name: desplazar;
+    animation-duration: 0.5s;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.hidden{
+    visibility: hidden;
+    display: none;
+}
+
 *{
     margin: 0;
     padding: 0;
 }
 
-
-.container{
-    background-image: radial-gradient(90deg, rgb(199, 235, 220), rgb(107, 119, 122));
-    width: 50%;
-    height: 70%;
-    border: 1px black solid;
+body{
+    box-sizing: border-box;
+    background-color: ghostwhite;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.container input{
-    width: 95%;
+/*login*/
+.container{
+    padding: 5%;
+    background-color: rgb(247, 238, 227);
+    width: 70%;
+    height: 350px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container h1{
+    color: rgb(65, 37, 3);
+}
+
+.inputBox{
+    position: relative;
+    width: 100%;
+    transition: ease-in;
+}
+
+.inputBox input{
+    background-color: ghostwhite;
+    border-style: none;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    border: rgb(223, 185, 138) 3px solid;
+    color: rgb(65, 37, 3);
+    outline: none;
+    transition: ease-in;
+}
+
+.linea{
+    position: absolute;
+    padding: 10px;
+    left: 0;
+    top: 0;
+    color: rgb(223, 185, 138);
+    pointer-events: none;
+}
+
+.inputBox input:active,
+.inputBox input:valid,
+.inputBox input:hover{
+    border: rgb(230, 146, 44) 3px solid;
+}
+
+.inputBox input:focus ~ .linea,
+.inputBox input:valid ~ .linea{
+    color: rgb(230, 146, 44);
+    transform: translateY(-70%);
+}
+
+.container button{
+    border-style: none;
+    background-color:  ghostwhite;
+    width: 90%;
+    height: 15%;
+    border: rgb(196, 128, 46) 2px solid;
+    color: rgb(90, 53, 7);
+    border-radius: 20px;
+    font-size: 120%;
+}
+
+.container button:hover,
+.container button:active{
+    background-color: rgb(230, 136, 22);
+    border: rgb(230, 136, 22) 2px solid;
+    color: rgb(247, 243, 240);
+}
+
+/*index*/
+
+/*header*/
+header{
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    margin: 0;
+    background-color: rgb(196, 128, 46);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 10%;
+}
+
+.logo{
+    margin-left: 5%;
+    width: 10%;
+}
+
+.menu{
+    background-color: transparent;
+    width: 15%;
+    height: 100%;
+    border-style: none;
+    cursor: pointer;
+}
+.menu img{
+    width: 80%;
+}
+
+.opciones{
+    position: absolute;
+    height: 1050px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    background-color: rgba(63, 38, 7, 0.445);
+    backdrop-filter: blur(12px);
+}
+.opciones div{
+    padding-right: 1%;
+    padding-top: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 20px;
+    width: 70%;
+    height: 100%;
+    background-color: rgb(196, 128, 46);
+}
+
+.opciones button{
+    border-style: none;
+    background-color: transparent;
+    height: 3%;
+    width: 11%;
+    font-size: 180%;
+    padding: 0;
+}
+.opciones button ion-icon{
+    color: rgb(65, 37, 3);
+}
+.opciones button:hover,
+.opciones button:active{
+    background-color: rgb(138, 77, 4);
+}
+
+.opciones li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 30px;
+}
+.opciones ul{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.opciones a{
+    color: rgb(65, 37, 3);
+    padding: 5px;
+    text-decoration: none;
+    font-size: 110%;
+    cursor: pointer;
+}
+.opciones a ion-icon{
+    font-size: 125%;
+}
+.opciones ul:hover,
+.opciones a:active ~ ul{
+    background-color: rgb(138, 77, 4);
+    box-shadow: rgba(56, 31, 1, 0.377) 0.5px 0.5px, rgba(77, 62, 45, 0.377) -0.5px -0.5px;
+}
+
+.app img{
+    width: 20%;
+}
+
+@media (min-width:426px) {
+    /*login*/
+
+    .container{
+        width: 50%;
+    }
+
+    .container input{
+        width: 95%;
+    }
+
+    .container button{
+        width: 90%;
+    }
+}
+
+@media (min-width:768px){
+    .container{
+        height: 500px;
+        font-size: 140%;
+    }
+
+    .container input{
+        font-size: 100%;
+        height: 60%;
+    }
 }
