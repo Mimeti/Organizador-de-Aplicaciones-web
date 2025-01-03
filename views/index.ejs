@@ -11,44 +11,48 @@
         <img src="/resources/img/expresso.png" class="logo">
 
         <% if (user.ID_deb == 2) {%>
-            <button class="menu" id="menu"><img src="/resources/img/menu-bar.png" alt=""></button>
+            <button class="menu" id="menu"><ion-icon name="menu-outline"></ion-icon></button>
         <% }else{%>
-            <button class="hidden" id="menu"><img src="/resources/img/menu-bar.png" alt=""></button>
+            <button class="hidden" id="menu"></button>
         <%}%>
         
         <% if (user.ID_deb == 2) {%>
         <nav id="nav" class="opciones hidden">
             <div id="list">
-                <button id="back"><ion-icon name="arrow-forward-outline"></ion-icon></button>
+                <button id="back"><ion-icon name="close-outline"></ion-icon></button>
                 <li>
                     <ul><a href="/registro">Registrar usuario <ion-icon name="person-add"></ion-icon></a></ul>
                     <ul><a href="/add">Ingresar nueva aplicacion <ion-icon name="reader"></ion-icon></a></ul>
-                    <a href="/logout">Salir <ion-icon name="exit"></ion-icon></a>    
+                    <a href="/logout" class="logout">Salir <ion-icon name="exit"></ion-icon></a>    
                 </li>
             </div>
         </nav>
         <% }else{%>
-            <a class="visible" href="/logout">salir</a>    
+            <a class="visible logoutB" href="/logout"><ion-icon name="exit"></ion-icon></a>    
         <%}%>  
     </header>
- 
-    <% apps.forEach((app)=>{ %>
+    
+    <div class="app-container">
+        <% apps.forEach((app)=>{ %>
         <div class="app">
-            <a href=<%=app.URL_app%>><img src="/resources/img/<%=app.IMG_app%>" alt=""> </a>
-            <p><%=app.NAME_app%></p>
+            <a href=<%=app.URL_app%>><img src="/resources/img/<%=app.IMG_app%>" alt=""> <p><%=app.NAME_app%></p></a>
             <% if (user.ID_deb == 2) {%>
-                <a href="/update/<%= app.ID_app %>">editar</a>
-                <a href="/delete/<%= app.ID_app %>">borrar</a>
+                <div>
+                    <a href="/update/<%= app.ID_app %>" class="edit">editar</a>
+                    <a href="/delete/<%= app.ID_app %>" class="borrar">borrar</a>
+                </div>
             <% } %>
         </div>
-        
-    <%})%>
+            
+        <%})%>
 
-    <% if (user.ID_deb == 2) {%>
-        <div> 
-            <a href="/add">nuevo</a>
-        </div>
-    <% } %>
+        <% if (user.ID_deb == 2) {%>
+            <div class="app"> 
+                <a href="/add" class="new"><ion-icon name="create-outline"></ion-icon> nuevo</a>
+            </div>
+        <% } %>
+    </div>
+    
     
     <footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

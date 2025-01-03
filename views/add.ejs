@@ -4,24 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./resources/css/style.css">
 </head>
 <body>
     <% if (user.ID_deb == 2) {%>
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="text" name="NAME_app" id="NAME_app" placeholder="Nombre de la aplicación">
-            <input type="text" name="URL_app" id="URL_app" placeholder="Enlace de la aplicacion">
-            <label for="IMG_app">Imagen de la aplicacion</label>
-            <input type="file" name="IMG_app" id="IMG_app">
-            <label for="ID_deb">Area</label>
-            <select name="ID_deb" id="ID_deb">
-                <option value=""></option>
-                <% deb.forEach((depart)=>{ %>
-                    <option value=<%= depart.ID_deb%>><%= depart.NAME_deb%></option>
-                <%})%>
-            </select>
-            <button type="submit">Ingresar datos</button>
-            <a href="/">Volver</a>
-        </form>
+        <div class="container">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <h1>Agregar App</h1>
+                <div class="inputBox">
+                    <input type="text" name="NAME_app" id="NAME_app" required>
+                    <span class="linea">Nombre de la aplicacion</span>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="URL_app" id="URL_app" required>
+                    <span class="linea">URL de la aplicacion</span>
+                </div>
+                <div class="ImgApp">
+                    <label for="IMG_app" id="file">Imagen de la Aplicaicon</label>
+                    <input type="file" name="IMG_app" id="IMG_app" required>
+                </div>
+                <div class="containerS">
+                    <label for="ID_deb">Area:</label>
+                    <select name="ID_deb" id="ID_deb">
+                        <option value="">Seleccione una opcion</option>
+                        <% deb.forEach((depart)=>{ %>
+                            <option value=<%= depart.ID_deb%>><%= depart.NAME_deb%></option>
+                        <%})%>
+                    </select>
+                </div>
+                <div class="botones">
+                    <button type="submit">Ingresar datos</button>
+                    <a href="/">Volver</a>
+                </div>
+                
+            </form>
+        </div>
     <% } %>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/resources/js/script.js"></script>
 </body>
 </html>

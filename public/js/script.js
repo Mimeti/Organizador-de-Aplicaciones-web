@@ -12,3 +12,16 @@ back.addEventListener("click", ()=>{
     nav.classList.add("hidden");
     list.classList.remove("desplegar");
 })
+
+var loader=function(e){
+    let file=e.targets.files;
+
+    let show = "<span>Imagen seleccionada: </span>"+file[0].name;
+
+    let output = document.getElementById("file");
+    output.innerHTML = show;
+    output.classList.add("active")
+}
+
+let fileinput = document.getElementById("IMG_app");
+fileinput.addEventListener("change", loader);
