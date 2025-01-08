@@ -54,6 +54,7 @@ body{
 
 .container h1{
     color: rgb(65, 37, 3);
+    text-align: center;
 }
 
 .inputBox{
@@ -146,7 +147,7 @@ header{
 
 .opciones{
     position: absolute;
-    height: 1050px;
+    height: 3000px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -162,7 +163,7 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: end;
-    gap: 20px;
+    gap: 10px;
     width: 70%;
     height: 100%;
     background-color: rgb(196, 128, 46);
@@ -173,7 +174,7 @@ header{
     background-color: transparent;
     height: 3%;
     width: 11%;
-    font-size: 180%;
+    font-size: 200%;
     padding: 0;
 }
 .opciones button ion-icon{
@@ -245,21 +246,23 @@ header{
 }
 /*aplicaciones*/
 .app-container{
-    min-height: 100vh;
     margin-top: 20%;
     display: grid;
-    grid-template-columns: repeat(3, 29%);
-    grid-gap: 6.5%;
-    grid-auto-rows: 24%;
+    grid-template-columns: repeat(3, 28%);
+    width: 100%;
+    grid-gap: 10%;
+    grid-auto-rows: 20%;
 }
 
 .app{
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     
 }
+
 
 .app a{
     border-radius: 10px;
@@ -268,6 +271,9 @@ header{
     flex-direction: column;
     align-items: center;
     text-decoration: none;
+    overflow: hidden;
+    width: 50%;
+
 }
 .app a:hover,
 .app a:active{
@@ -328,28 +334,36 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
 }
 
 .ImgApp input[type="file"]{
-    display: none;
-}
-.ImgApp label{
-    display: inline-block;
-    background-color: rgb(223, 185, 138);
-    color: rgb(65, 37, 3);
-    font-size: 120%;
-    border-radius: 25px;
+    background-color: bisque;
     width: 90%;
-    height: 150%;
-    padding: 1px;
+    height: 40px;
+    font-size: 80%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 15px;
+    color: rgb(65, 37, 3);
 }
-.ImgApp label:hover,
-.ImgApp label:active{
+
+::-webkit-file-upload-button{
+    width: 40%;
+    height: 100%;
+    font-size: 70%;
+    border-style: none;
+    background-color: rgb(223, 185, 138);
+}
+
+::-webkit-file-upload-button:hover,
+::-webkit-file-upload-button:active{
     background-color: rgb(230, 146, 44);
+}
+
+.ImgApp label{
+    color: rgb(148, 84, 5);
+    font-size: 110%;
 }
 
 .containerS{
@@ -381,14 +395,6 @@ header{
 
 .containerS label{
     color: rgb(148, 84, 5);
-}
-
-.active{
-    background-color: black;
-}
-
-.containerS span{
-    color: aqua;
 }
 
 .botones{
@@ -425,6 +431,37 @@ header{
     border: rgb(212, 122, 11) 2px solid;
 }
 
+.imgOld{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    font-size: 110%;
+    padding: 1%;
+    color: rgb(65, 37, 3);
+    gap: 10px;
+}
+
+.imgOld img{
+    width: 45px;
+    height: 45px;
+    border: 0.5px solid rgb(65, 37, 3);
+    border-radius: 5px;
+}
+
+.imgOld span{
+    background-color: rgb(223, 185, 138);
+    padding: 5px;
+    border-radius: 10px;
+    width: 60%;
+    text-align: center;
+}
+
+.expand form{
+    height: 500px;
+}
+
+
 @media (min-width:426px) {
     /*login*/
 
@@ -438,6 +475,91 @@ header{
 
     .container button{
         width: 90%;
+    }
+
+    /*index*/
+    header{
+        height: 13%;
+    }
+
+    .logo{
+        width: 6%;
+    }
+
+    .menu{
+        display: none;
+    }
+
+    .opciones{
+        visibility: visible;
+        background-color: transparent;
+        backdrop-filter: none;
+        height: 100%;
+        width: 60%;
+        right: 0;
+    }
+
+    .opciones div{
+        padding-top: 0;
+        padding-right: 0;
+        gap: 0;
+        flex-direction: row;
+        height: 100%;
+    }
+
+    .opciones button{
+        display: none;
+    }
+
+    .opciones li{
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .opciones ul{
+        height: 100%;
+        width: 100%;
+        font-size: 100%;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .opciones ul ion-icon{
+        display: none;
+    }
+
+    .opciones a{
+        color: antiquewhite;
+        text-shadow: 1px 1px 1px rgb(65, 37, 3);
+    }
+
+    .logout{
+        height: 89%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bolder;
+    }
+
+    .opciones a ion-icon{
+        display: none;
+    }
+
+    .app-container{
+        grid-gap: 7%;
+    }
+    
+    .app img{
+        width: 70px;
+        height: 70px;
+    }
+    
+    .new{
+        width: 70px;
+        height: 70px;
+        font-size: 120%;
     }
 }
 
@@ -455,5 +577,57 @@ header{
         font-size: 100%;
         width: 95%;
         height: 60%;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    header{
+        font-size: 125%;
+        height: 20%;
+    }
+
+    .app{
+        font-size: 150%;
+    }
+
+    .app img{
+        width: 100px;
+        height: 100px;
+    }
+
+    .new{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (min-width: 1440px){
+    .container form{
+        height: 800px;
+        width: 60%;
+        font-size: 150%;
+    }
+
+    .container input{
+        height: 70%;
+    }
+
+    header{
+        font-size: 250%;
+    }
+
+    .app{
+        font-size: 250%;
+    }
+
+    .app img{
+        width: 200px;
+        height: 200px;
+    }
+
+    .new{
+        width: 200px;
+        height: 200px;
     }
 }

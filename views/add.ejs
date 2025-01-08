@@ -20,13 +20,12 @@
                     <span class="linea">URL de la aplicacion</span>
                 </div>
                 <div class="ImgApp">
-                    <label for="IMG_app" id="file">Imagen de la Aplicaicon</label>
+                    <label for="IMG_app" id="file">Imagen de la Aplicacion: </label>
                     <input type="file" name="IMG_app" id="IMG_app" required>
                 </div>
                 <div class="containerS">
                     <label for="ID_deb">Area:</label>
-                    <select name="ID_deb" id="ID_deb">
-                        <option value="">Seleccione una opcion</option>
+                    <select name="ID_deb" id="ID_deb" required>
                         <% deb.forEach((depart)=>{ %>
                             <option value=<%= depart.ID_deb%>><%= depart.NAME_deb%></option>
                         <%})%>
@@ -41,8 +40,20 @@
         </div>
     <% } %>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="/resources/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <%if(typeof alert != "undefined") {%>
+        <script>
+            swal.fire({
+                title: '<%=title%>',
+                timer: '<%=timer%>',
+                icon: '<%=icon%>',
+                showConfirmButton: false,
+                text: '<%=text%>'
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
 </body>
 </html>

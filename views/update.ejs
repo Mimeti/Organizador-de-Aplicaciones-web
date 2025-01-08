@@ -4,21 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 <body>
     <% if (user.ID_deb == 2) {%>
         <% apl.forEach((apl)=>{%>
-            <form action="/actualizar" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="ID_app" value=<%= apl.ID_app %>>
-                <input type="hidden" name="IMG_old" value=<%= apl.IMG_app %>>
-                <input type="text" name="NAME_app" id="NAME_app" placeholder="Nombre de la aplicación" value=<%= apl.NAME_app %>>
-                <input type="text" name="URL_app" id="URL_app" placeholder="Enlace de la aplicacion" value=<%= apl.URL_app %>>
-                <label for="IMG_app">cambiar Imagen</label>
-                <input type="file" name="IMG_app" id="IMG_app">
-                <img src="/resources/img/<%=apl.IMG_app%>" alt="" srcset="">
-                <button type="submit">Ingresar datos</button>
-                <a href="/">Volver</a>
-            </form>
+            <div class="container expand">
+                <form action="/actualizar" method="post" enctype="multipart/form-data">
+                    
+                    <input type="hidden" name="ID_app" value=<%= apl.ID_app %>>
+                    <input type="hidden" name="IMG_old" value=<%= apl.IMG_app %>>
+                    <h1>Actualizar aplicacion</h1>
+                    <div class="inputBox">
+                        <input type="text" name="NAME_app" id="NAME_app" value=<%= apl.NAME_app %> required>
+                        <span class="linea">Nombre de la aplicacion </span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="URL_app" id="URL_app" value=<%= apl.URL_app %> required>
+                        <span class="linea">URL de la aplicacion </span>
+                    </div>
+                    <div class="imgOld">
+                        <span>Imagen actual: </span>
+                        <img src="../resources/img/<%= apl.IMG_app %>" alt="">
+                    </div>
+                    <div class="ImgApp">
+                        <label for="IMG_app" id="file">Imagen de la Aplicacion: </label>
+                        <input type="file" name="IMG_app" id="IMG_app" required>
+                    </div>
+                    
+                    <div class="botones">
+                        <button type="submit">Actualizar</button>
+                        <a href="/">Volver</a>
+                    </div>
+                </form>
+            </div>
+            
         <% })%>
     <% } %>
     

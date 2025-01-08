@@ -1,8 +1,11 @@
-const { error } = require('console');
+const { error, time } = require('console');
 const conexion = require('../config/conexion');
 const multer = require('multer');
 const fs = require('fs');
 const {promisify} = require('util');
+const swal = require('sweetalert2');
+const { title } = require('process');
+const { text } = require('stream/consumers');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -20,22 +23,49 @@ exports.upload =  (req, res) =>{
     const URL_app = req.body.URL_app;
     const ID_deb = req.body.ID_deb;
     const IMG_app = req.file.filename;
-    if(IMG_app && NAME_app){
+    if(IMG_app && NAME_app  && URL_app  && ID_deb){
         conexion.query('SELECT * FROM aplicacion WHERE NAME_app = ? OR IMG_app =?', [NAME_app, IMG_app], async(error, result)=>{
             if(result.length != 0){
-                res.send('ya existe');
+                res.render("add",{
+                    deb:"", 
+                    user: "", 
+                    alert:"true",
+                    title: "Aplicacion",
+                    text: "El nombre o icono de la aplicacion y existen. Cambielos e intente de nuevo",
+                    icon: "error",
+                    timer: 1500,
+                    ruta: "add"
+                })
             }else{
                 conexion.query('INSERT INTO aplicacion SET ?', {NAME_app:NAME_app, URL_app:URL_app, IMG_app:IMG_app, ID_deb:ID_deb}, async(error, result)=>{
-                    try {
-                        console.log('se logro');
-                    } catch (error) {
+                    if(error){
                         throw error;
+                    }else{
+                        res.render("add",{
+                            deb:"", 
+                            user: "", 
+                            alert:"true",
+                            title: "Aplicacion",
+                            text: "Aplicacion registrada exitosamente",
+                            icon: "success",
+                            timer: 1500,
+                            ruta: ""
+                        })
                     }
                 })
             }
         })
     }else{
-        res.send('te faltan datos pa');
+        res.render("add",{
+            deb:"", 
+            user: "", 
+            alert:"true",
+            title: "Aplicacion",
+            text: "Debe ingresar todos los datos",
+            icon: "error",
+            timer: 1500,
+            ruta: "app"
+        })
     }
 } 
 

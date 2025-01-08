@@ -30,7 +30,14 @@ exports.save = async (req, res) =>{
     if(user && password){
         conexion.query('SELECT * FROM usuario WHERE NAME_user = ?', [user], async(error, results)=>{
             if(results.length == 0 || !(await cryp.compare(password, results[0].CONT_user))){
-                res.send('no existes pa');
+                res.render("login",{
+                    alert:"true",
+                    title: "Inicio de sesion fallido",
+                    icon: "error",
+                    text: "Usuario y/o contraseña incorrectos",
+                    timer: 1500,
+                    ruta: "login"
+                })
             }else{
                 const id = results[0].ID_user;
                 const token = jwt.sign({id:id}, process.env.JWT_SECRETO, {
@@ -41,7 +48,14 @@ exports.save = async (req, res) =>{
                     httpOnly: true
                 };
                 res.cookie('jwt', token, cookieConfig)
-                res.redirect('/');
+                res.render("login",{
+                    alert:"true",
+                    title: "Inicio de sesion exitoso",
+                    text: "Bienvenido",
+                    icon: "success",
+                    timer: 1500,
+                    ruta: ""
+                })
             }
         })
     }
