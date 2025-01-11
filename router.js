@@ -3,6 +3,7 @@ const router = express.Router();
 const cont = require('./config/conexion');
 const auth = require('./controller/auth');
 const aplication = require('./controller/aplication');
+const fs = require('fs');
 
 //rutas
 router.get("/", auth.authentication, (req,res)=>{
@@ -49,14 +50,22 @@ router.get('/update/:id', auth.authentication, (req, res)=>{
     
 })
 
-router.get('/delete/:id', auth.authentication, (req, res)=>{
-    const {id} = req.params;
-    const app = cont.query('SELECT * FROM aplicacion WHERE ID_app = ?', [id], (error,results) =>{
-        console.log(results)
-        if(error){
+router.get('/borrar/:id', auth.authentication, (req, res)=>{
+    const ID_app = req.params.id;
+    cont.query('SELECT * FROM aplicacion WHERE ID_app =?', [ID_app], (error, result)=>{
+        const IMG_old = result[0].IMG_app;
+        try {
+            fs.unlinkSync('./public/img/'+IMG_old);
+            console.log("Delete File successfully.");
+            cont.query('DELETE FROM aplicacion WHERE ID_app =?', [ID_app], (error, result)=>{
+            if(error){
+                throw error;
+            }else{
+                res.redirect('/');
+            }
+            })
+        } catch (error) {
             throw error;
-        }else{
-            res.render('delete', {apl:results, user:req.NAME_user});
         }
     })
 })
@@ -68,6 +77,5 @@ router.get('/logout', auth.logOut);
 
 router.post('/upload', aplication.subida.single('IMG_app') ,aplication.upload);
 router.post('/actualizar', aplication.subida.single('IMG_app') ,aplication.actualizar);
-router.post('/borrar', aplication.borrar);
 
 module.exports = router;

@@ -7,32 +7,50 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <form action="/sigin" method="post">
-            <h1>Registrar usuario</h1>
-            <div class="inputBox">
-                <input type="text" name="user" id="user" required>
-                <span class="linea">Ingrese un nombre de usuario</span>
-            </div>
-            <div class="inputBox">
-                <input type="password" name="pass" id="pass" required>
-                <span class="linea">Ingrese una contraseña</span>
-            </div>
-            <div class="containerS">
-                <label for="ID_deb">Area: </label>
-                <select name="ID_deb" id="ID_deb">
-                    <% deb.forEach((depart)=>{ %>
-                        <option value=<%= depart.ID_deb%>><%= depart.NAME_deb%></option>
-                    <%})%>
-                </select>
-            </div>
-            
-            <div class="botones">
-                <button type="submit">Ingresar datos</button>
-                <a href="/">Volver</a>
-            </div>
-        </form>
-    </div>
+    <% if (user.ID_deb == 2) {%> 
+        <div class="container">
+            <form action="/sigin" method="post">
+                <h1>Registrar usuario</h1>
+                <div class="inputBox">
+                    <input type="text" name="user" id="user" required>
+                    <span class="linea">Ingrese un nombre de usuario</span>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="pass" id="pass" required>
+                    <span class="linea">Ingrese una contraseña</span>
+                </div>
+                <div class="containerS">
+                    <label for="ID_deb">Area: </label>
+                    <select name="ID_deb" id="ID_deb">
+                        <% deb.forEach((depart)=>{ %>
+                            <option value=<%= depart.ID_deb%>><%= depart.NAME_deb%></option>
+                        <%})%>
+                    </select>
+                </div>
+                
+                <div class="botones">
+                    <button type="submit">Ingresar datos</button>
+                    <a href="/">Volver</a>
+                </div>
+            </form>
+        </div>
+    <%}%>
     
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <%if(typeof alert != "undefined") {%>
+        <script>
+            swal.fire({
+                title: '<%=title%>',
+                timer: '<%=timer%>',
+                icon: '<%=icon%>',
+                showConfirmButton: false,
+                text: '<%=text%>'
+            }).then(()=>{
+                window.location='/<%= ruta %>'
+            })
+        </script>
+    <% } %>
 </body>
 </html>

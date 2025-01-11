@@ -3,7 +3,6 @@ const conexion = require('../config/conexion');
 const multer = require('multer');
 const fs = require('fs');
 const {promisify} = require('util');
-const swal = require('sweetalert2');
 const { title } = require('process');
 const { text } = require('stream/consumers');
 
@@ -100,23 +99,5 @@ exports.actualizar = (req, res) =>{
                 res.redirect('/');
             }
         })
-    }
-}
-
-exports.borrar = (req, res) =>{
-    const ID_app = req.body.ID_app;
-    const IMG_old = req.body.IMG_old;
-    try {
-        fs.unlinkSync('./public/img/'+IMG_old);
-        console.log("Delete File successfully.");
-        conexion.query('DELETE FROM aplicacion WHERE ID_app =?', [ID_app], (error, result)=>{
-            if(error){
-                throw error;
-            }else{
-                res.redirect('/');
-            }
-        })
-    } catch (error) {
-        throw error;
     }
 }

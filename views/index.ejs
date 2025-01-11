@@ -39,7 +39,7 @@
             <% if (user.ID_deb == 2) {%>
                 <div>
                     <a href="/update/<%= app.ID_app %>" class="edit">editar</a>
-                    <a href="/delete/<%= app.ID_app %>" class="borrar">borrar</a>
+                    <a onclick="confirmar('<%= app.ID_app %>')" class="borrar">borrar</a>
                 </div>
             <% } %>
         </div>
@@ -53,11 +53,29 @@
         <% } %>
     </div>
     
-    
     <footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="/resources/js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </footer>
+
+    <script>
+        function confirmar(id){
+            swal.fire({
+                icon: "warning",
+                title: "Confirmacion",
+                text: "¿Desea eliminar esta aplicacion?",
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirmar'
+            }).then((result)=>{
+                if(result.isConfirmed){
+                    window.location = '/borrar/'+id;
+                }
+            })
+        }
+    </script>
 </body>
 </html>

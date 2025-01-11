@@ -15,11 +15,28 @@ exports.sigin = async (req, res) => {
             if(error){
                 console.log(error);
             }else{
-                res.send('se logro');
+                res.render("registro",{
+                    deb: "",
+                    user: "",
+                    alert:"true",
+                    title: "Registro",
+                    icon: "success",
+                    text: "Usuario registrado con exito",
+                    timer: 1500,
+                    ruta: ""
+                })
             }
         })
     }else{
-        res.send('todo mal');
+        res.render("registro",{
+            deb: "1",
+            alert:"true",
+            title: "Registro",
+            icon: "error",
+            text: "Debe ingresar todos los datos",
+            timer: 1500,
+            ruta: "registro"
+        })
     }
 }
 
