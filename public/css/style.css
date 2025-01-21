@@ -260,7 +260,7 @@ header{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    
+    gap: 5px;
 }
 
 
@@ -270,10 +270,10 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     text-decoration: none;
     overflow: hidden;
-    width: 50%;
-
+    width: 70%;
 }
 .app a:hover,
 .app a:active{
@@ -282,8 +282,8 @@ header{
 
 .app img{
     border-radius: 10px;
-    width: 55px;
-    height: 55px;
+    width: 100%;
+    height: 500px;
     margin-bottom: 2%;
 }
 
@@ -298,9 +298,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    font-size: 100%;
+    height: 60px;
 }
 
 .edit{
@@ -551,15 +549,19 @@ header{
         grid-gap: 7%;
     }
     
-    .app img{
-        width: 70px;
-        height: 70px;
+    .app a{
+        width: 50%;
     }
-    
+
+
+    .app img{
+        width: 100%;
+        height: 500px;
+    }
+
     .new{
         width: 70px;
         height: 70px;
-        font-size: 120%;
     }
 }
 
@@ -578,6 +580,21 @@ header{
         width: 95%;
         height: 60%;
     }
+
+    .app a{
+        width: 45%;
+    }
+
+
+    .app img{
+        width: 100%;
+        height: 700px;
+    }
+
+    .new{
+        width: 70px;
+        height: 70px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -589,16 +606,22 @@ header{
 
     .app{
         font-size: 150%;
+        height: 300px;
     }
 
+    .app a{
+        width: 50%;
+    }
+
+
     .app img{
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        height: 800px;
     }
 
     .new{
-        width: 100px;
-        height: 100px;
+        width: 200px;
+        height: 200px;
     }
 }
 
@@ -619,15 +642,22 @@ header{
 
     .app{
         font-size: 250%;
+        height: 450px;
     }
 
+    .app a{
+        width: 50%;
+    }
+
+
     .app img{
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        height: 800px;
     }
 
     .new{
         width: 200px;
-        height: 200px;
+        height: 300px;
+        font-size: 150%;
     }
 }
